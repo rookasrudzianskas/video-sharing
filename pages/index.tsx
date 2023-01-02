@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="https://cdn.pixabay.com/photo/2021/06/15/12/28/tiktok-6338430_1280.png" />
       </Head>
 
-      TikTok
+      <h1>Hello World</h1>
     </div>
   )
 }
