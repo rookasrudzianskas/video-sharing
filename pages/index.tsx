@@ -19,5 +19,5 @@ const Home: NextPage = () => {
 export default Home;
 
 export const getServerSideProps = async () => {
-
+    let response = await axios.get();
 }
