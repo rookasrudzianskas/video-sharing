@@ -12,10 +12,16 @@ import Logo from '../utils/tiktik-logo.png';
 
 const Navbar = ({}) => {
     return (
-        <div>
+        <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
             <Link href="/">
-                <div>
-                    <Image src={Logo} className="cursor-pointer" alt="Logo" width={50} height={50} />
+                <div className="w-[100px] md:w-[129px]">
+                    <Image
+                        className='cursor-pointer'
+                        src={Logo}
+                        alt='logo'
+                        width={150}
+                        height={150}
+                    />
                 </div>
             </Link>
         </div>
