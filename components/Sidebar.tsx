@@ -39,6 +39,9 @@ const Sidebar = ({}) => {
                                     onSuccess={(res) => console.log(res)}
                                     onFailure={(res) => console.log(res)}
                                     cookiePolicy={'single_host_origin'}
+                                    render={(renderProps) => (
+                                        <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="bg-white text-lg text-[#F51997] border-[1px] border-[#F51997] font-semibold px-5 py-3 rounded-md outline-none w-full mt-3 hover:text-white hover:bg-[#F51997] cursor-pointer">Log in</button>
+                                    )}
                                 />
                             </div>
                         </div>
