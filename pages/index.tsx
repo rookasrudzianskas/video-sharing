@@ -19,5 +19,6 @@ const Home: NextPage = () => {
 export default Home;
 
 export const getServerSideProps = async () => {
-    let response = await axios.get();
+    let response = await axios.get(`http://localhost:3000/api/post`);
+    console.log(response);
 }
