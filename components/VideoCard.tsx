@@ -37,6 +37,14 @@ const VideoCard: NextPage<IProps> = ({ post: { caption, postedBy, video, _id, li
         }
     }, [isVideoMuted]);
 
+    if(!isShowingOnHome) {
+        return (
+            <div>
+
+            </div>
+        )
+    }
+
     return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
             <div>
