@@ -16,6 +16,11 @@ interface IProps {
 }
 
 const VideoCard: NextPage<IProps> = ({ post: { caption, postedBy, video, _id, likes }, isShowingOnHome }) => {
+    const [playing, setPlaying] = useState(false);
+    const [isHover, setIsHover] = useState(false);
+    const [isVideoMuted, setIsVideoMuted] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
     return (
         <div className="flex flex-col border-b-2 border-gray-200 pb-6">
             <div className="">
@@ -49,8 +54,8 @@ const VideoCard: NextPage<IProps> = ({ post: { caption, postedBy, video, _id, li
 
             <div className="lg:ml-20 flex gap-4 relative">
                 <div
-                    onMouseEnter={() => {}}
-                    onMouseLeave={() => {}}
+                    onMouseEnter={() => { setIsHover(true) }}
+                    onMouseLeave={() => { setIsHover(false) }}
                     className="rounded-3xl">
                     <Link href="/">
                         <video
@@ -61,6 +66,12 @@ const VideoCard: NextPage<IProps> = ({ post: { caption, postedBy, video, _id, li
 
                         </video>
                     </Link>
+
+                    {isHover && (
+                        <div className='absolute bottom-6 cursor-pointer left-8 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] lg:w-[600px] p-3'>
+
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
