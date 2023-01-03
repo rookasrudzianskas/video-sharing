@@ -14,5 +14,7 @@ export const createOrGetUser = async (response: any) => {
     image: picture
   };
 
+  // addUser(user);
+
   await axios.post(`http://localhost:3000/api/auth`, user);
 };
