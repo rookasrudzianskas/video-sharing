@@ -2,8 +2,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import axios from 'axios';
+import {Video} from "../types";
 
-const Home: NextPage = () => {
+interface IProps {
+    videos: Video[];
+}
+
+const Home = ({ videos }: IProps) => {
   return (
     <div className="">
       <Head>
@@ -19,11 +24,11 @@ const Home: NextPage = () => {
 export default Home;
 
 export const getServerSideProps = async () => {
-    let response = await axios.get(`http://localhost:3000/api/post`);
-    console.log(response.data.name);
+    let { data } = await axios.get(`http://localhost:3000/api/post`);
+
     return {
         props: {
-
+            videos: data
         }
     }
 }
