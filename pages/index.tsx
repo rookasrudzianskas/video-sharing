@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import axios from 'axios';
 import {Video} from "../types";
+import VideoCard from '../components/VideoCard';
+import NoResults from '../components/NoResults';
 
 interface IProps {
     videos: Video[];
@@ -16,7 +18,13 @@ const Home = ({ videos }: IProps) => {
         <link rel="icon" href="https://cdn.pixabay.com/photo/2021/06/15/12/28/tiktok-6338430_1280.png" />
       </Head>
 
-      <h1>Hello World</h1>
+      <div className="flex flex-col gap-10 videos h-full">
+          {videos.length ? (videos.map((video: Video) => (
+              <VideoCard post={video} key={video._id} />
+          ))) : (
+              <NoResults text={'No results found'} />
+          )}
+      </div>
     </div>
   )
 }
