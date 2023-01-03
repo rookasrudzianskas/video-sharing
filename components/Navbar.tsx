@@ -11,6 +11,7 @@ import { createOrGetUser } from '../utils';
 import Logo from '../utils/tiktik-logo.png';
 
 const Navbar = ({}) => {
+    const user = false;
     return (
         <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
             <Link href="/">
@@ -24,6 +25,26 @@ const Navbar = ({}) => {
                     />
                 </div>
             </Link>
+
+            <div>
+                SEARCH
+            </div>
+
+            <div>
+                {user ? (
+                    <div>
+                        Logged in
+                    </div>
+                ) : (
+                    <GoogleLogin
+                        onError={() => {
+                            console.log("error");
+                        }}
+                        onSuccess={() => {
+                            console.log("success");
+                        }} />
+                )}
+            </div>
         </div>
     );
 };
