@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DetailPage = ({}) => {
+const Detail = ({}) => {
     return (
         <div>
             
@@ -8,5 +8,5 @@ const DetailPage = ({}) => {
     );
 };
 
-export default DetailPage;
+export default Detail;
 // by Rokas with ❤️
