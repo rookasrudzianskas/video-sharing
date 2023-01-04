@@ -34,9 +34,9 @@ const Navbar = ({}) => {
             </div>
 
             <div>
-                {user ? (
+                {userProfile ? (
                     <div>
-                        Logged in
+                        {userProfile?.userName}
                     </div>
                 ) : (
                     <GoogleLogin
