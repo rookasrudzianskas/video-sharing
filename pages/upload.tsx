@@ -123,7 +123,7 @@ const Upload = ({}) => {
                                             src={videoAsset?.url}
                                         />
                                         <div className=' flex justify-between gap-20'>
-                                            <p className='text-lg'>{videoAsset.originalFilename}</p>
+                                            <p className='text-lg'>{(videoAsset.originalFilename).slice(0, 15)}</p>
                                             <button
                                                 type='button'
                                                 className=' rounded-full bg-gray-200 text-red-400 p-2 text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out'
@@ -180,7 +180,7 @@ const Upload = ({}) => {
 
                         <button
                             disabled={videoAsset?.url ? false : true}
-                            onClick={() => {}}
+                            onClick={handlePost}
                             type="button"
                             className='bg-[#F51997] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
                         >
