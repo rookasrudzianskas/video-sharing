@@ -54,8 +54,23 @@ const Upload = ({}) => {
                         ) : (
                             <div>
                                 {videoAsset ? (
-                                    <div>
-
+                                    <div className=' rounded-3xl w-[300px]  p-4 flex flex-col gap-6 justify-center items-center'>
+                                        <video
+                                            className='rounded-xl h-[462px] mt-16 bg-black'
+                                            controls
+                                            loop
+                                            src={videoAsset?.url}
+                                        />
+                                        <div className=' flex justify-between gap-20'>
+                                            <p className='text-lg'>{(videoAsset.originalFilename)?.slice(0, 15)}</p>
+                                            <button
+                                                type='button'
+                                                className=' rounded-full bg-gray-200 text-red-400 p-2 text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out'
+                                                onClick={() => setVideoAsset(undefined)}
+                                            >
+                                                <MdDelete />
+                                            </button>
+                                        </div>
                                     </div>
                                 ) : (
                                     <label className='cursor-pointer'>
@@ -87,8 +102,17 @@ const Upload = ({}) => {
                                         />
                                     </label>
                                 )}
+                                {wrongFileType && (
+                                    <p className='text-center text-xl text-red-400 font-semibold mt-4 w-[260px]'>
+                                        Please select an video file (mp4 or webm or ogg)
+                                    </p>
+                                )}
                             </div>
                         )}
+                    </div>
+
+                    <div className='flex flex-col gap-3 pb-10'>
+                        <label className='text-md font-medium '>Caption</label>
                     </div>
                 </div>
             </div>
