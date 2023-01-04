@@ -10,10 +10,34 @@ import { BASE_URL } from '../utils';
 import { client } from '../utils/client';
 import { topics } from '../utils/constants';
 const Upload = ({}) => {
+    const [caption, setCaption] = useState('');
+    const [topic, setTopic] = useState<String>(topics[0].name);
     const [isLoading, setIsLoading] = useState<Boolean>(false);
-    const [videoAsset, setVideoAsset] = useState();
-    const uploadVideo = async (e) => {
+    const [savingPost, setSavingPost] = useState<Boolean>(false);
+    const [videoAsset, setVideoAsset] = useState<SanityAssetDocument | undefined>();
+    const [wrongFileType, setWrongFileType] = useState<Boolean>(false);
+    const uploadVideo = async (e: any) => {
+        const selectedFile = e.target.files[0];
+        const fileTypes = ['video/mp4', 'video/webm', 'video/ogg'];
 
+        if(fileTypes.includes(selectedFile.type)) {
+            setWrongFileType(false);
+            setIsLoading(true);
+
+            client.assets
+                .upload('file', selectedFile, {
+                    contentType: selectedFile.type,
+                    filename: selectedFile.name,
+                })
+                .then((data) => {
+                    setVideoAsset(data);
+                    setIsLoading(false);
+                });
+
+        } else {
+            setIsLoading(false);
+            setWrongFileType(true);
+        }
     }
 
     return (
