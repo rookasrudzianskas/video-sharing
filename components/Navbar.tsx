@@ -13,6 +13,7 @@ import useAuthStore from '../store/authStore';
 
 const Navbar = ({}) => {
     const user = false;
+    const router = useRouter();
     const { userProfile, addUser, removeUser } = useAuthStore();
 
     return (
