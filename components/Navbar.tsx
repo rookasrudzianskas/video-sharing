@@ -35,8 +35,13 @@ const Navbar = ({}) => {
 
             <div>
                 {userProfile ? (
-                    <div>
-                        {userProfile?.userName}
+                    <div className="flex gap-5 md:gap-10">
+                        <Link href={'/upload'}>
+                            <button>
+                                <IoMdAdd className='text-xl' />{" "}
+                                <span className="hidden">Upload</span>
+                            </button>
+                        </Link>
                     </div>
                 ) : (
                     <GoogleLogin
