@@ -12,6 +12,9 @@ import { topics } from '../utils/constants';
 const Upload = ({}) => {
     const [isLoading, setIsLoading] = useState<Boolean>(false);
     const [videoAsset, setVideoAsset] = useState();
+    const uploadVideo = async (e) => {
+
+    }
 
     return (
         <div className="flex w-full h-full">
@@ -31,8 +34,33 @@ const Upload = ({}) => {
 
                                     </div>
                                 ) : (
-                                    <label htmlFor="">
+                                    <label className='cursor-pointer'>
+                                        <div className='flex flex-col items-center justify-center h-full'>
+                                            <div className='flex flex-col justify-center items-center'>
+                                                <p className='font-bold text-xl'>
+                                                    <FaCloudUploadAlt className='text-gray-300 text-6xl' />
+                                                </p>
+                                                <p className='text-xl font-semibold'>
+                                                    Select video to upload
+                                                </p>
+                                            </div>
 
+                                            <p className='text-gray-400 text-center mt-10 text-sm leading-10'>
+                                                MP4 or WebM or ogg <br />
+                                                720x1280 resolution or higher <br />
+                                                Up to 10 minutes <br />
+                                                Less than 2 GB
+                                            </p>
+                                            <p className='bg-[#F51997] text-center mt-8 rounded text-white text-md font-medium p-2 w-52 outline-none'>
+                                                Select file
+                                            </p>
+                                        </div>
+                                        <input
+                                            type='file'
+                                            name='upload-video'
+                                            onChange={(e) => uploadVideo(e)}
+                                            className='w-0 h-0'
+                                        />
                                     </label>
                                 )}
                             </div>
