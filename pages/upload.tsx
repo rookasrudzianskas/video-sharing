@@ -139,22 +139,8 @@ const Upload = ({}) => {
                             </option>
                         ))}
                     </select>
-                    <div className='flex gap-6 mt-10'>
-                        <button
-                            // onClick={handleDiscard}
-                            type='button'
-                            className='border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
-                        >
-                            Discard
-                        </button>
-                        <button
-                            disabled={videoAsset?.url ? false : true}
-                            // onClick={handlePost}
-                            type='button'
-                            className='bg-[#F51997] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
-                        >
-                            {savingPost ? 'Posting...' : 'Post'}
-                        </button>
+                    <div className="flex">
+                        
                     </div>
                 </div>
             </div>
