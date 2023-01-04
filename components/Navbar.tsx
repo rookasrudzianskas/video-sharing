@@ -42,6 +42,29 @@ const Navbar = ({}) => {
                                 <span className="hidden md:block">Upload</span>
                             </button>
                         </Link>
+                        {userProfile.image && (
+                            <Link href={`/profile/${userProfile._id}`}>
+                                <div>
+                                    <Image
+                                        className='rounded-full cursor-pointer'
+                                        src={userProfile.image}
+                                        alt='user'
+                                        width={40}
+                                        height={40}
+                                    />
+                                </div>
+                            </Link>
+                        )}
+                        <button
+                            type='button'
+                            className=' border-2 p-2 rounded-full cursor-pointer outline-none shadow-md'
+                            onClick={() => {
+                                googleLogout();
+                                removeUser();
+                            }}
+                        >
+                            <AiOutlineLogout color='red' fontSize={21} />
+                        </button>
                     </div>
                 ) : (
                     <GoogleLogin
