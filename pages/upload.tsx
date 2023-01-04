@@ -16,6 +16,7 @@ const Upload = ({}) => {
     const [savingPost, setSavingPost] = useState<Boolean>(false);
     const [videoAsset, setVideoAsset] = useState<SanityAssetDocument | undefined>();
     const [wrongFileType, setWrongFileType] = useState<Boolean>(false);
+    const router = useRouter();
 
     const userProfile: any = useAuthStore((state) => state.userProfile);
     const uploadVideo = async (e: any) => {
@@ -63,6 +64,9 @@ const Upload = ({}) => {
                 },
                 topic,
             };
+
+            await axios.post(`${BASE_URL}/api/post`, doc);
+            router.push('/');
         }
     }
 
