@@ -16,6 +16,8 @@ const Upload = ({}) => {
     const [savingPost, setSavingPost] = useState<Boolean>(false);
     const [videoAsset, setVideoAsset] = useState<SanityAssetDocument | undefined>();
     const [wrongFileType, setWrongFileType] = useState<Boolean>(false);
+
+    const userProfile: any = useAuthStore((state) => state.userProfile);
     const uploadVideo = async (e: any) => {
         const selectedFile = e.target.files[0];
         const fileTypes = ['video/mp4', 'video/webm', 'video/ogg'];
@@ -41,7 +43,27 @@ const Upload = ({}) => {
     }
 
     const handlePost = async () => {
+        if (caption && videoAsset?._id && topic) {
+            setSavingPost(true);
 
+            const doc = {
+                _type: 'post',
+                caption,
+                video: {
+                    _type: 'file',
+                    asset: {
+                        _type: 'reference',
+                        _ref: videoAsset?._id,
+                    },
+                },
+                userId: userProfile?._id,
+                postedBy: {
+                    _type: 'postedBy',
+                    _ref: userProfile?._id,
+                },
+                topic,
+            };
+        }
     }
 
     return (
