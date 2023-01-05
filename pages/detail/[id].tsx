@@ -30,7 +30,13 @@ const Detail = ({ postDetails }: IProps) => {
     const router = useRouter();
 
     const onVideoClick = () => {
-
+        if(isPlaying) {
+            videoRef.current?.pause();
+            setIsPlaying(false);
+        } else {
+            videoRef.current?.play();
+            setIsPlaying(true);
+        }
     }
 
     if(!post) return null;
@@ -48,7 +54,7 @@ const Detail = ({ postDetails }: IProps) => {
                         <video
                             ref={videoRef}
                             loop
-                            onClick={() => {} }
+                            onClick={onVideoClick}
                             className="h-full cursor-pointer"
                             src={post.video.asset.url}
                         >
