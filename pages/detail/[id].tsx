@@ -16,6 +16,7 @@ import { Video } from '../../types';
 import axios from 'axios';
 import Comments from "../../components/Comments";
 import LikeButton from "../../components/LikeButton";
+import comments from "../../components/Comments";
 
 interface IProps {
     postDetails: Video;
@@ -61,8 +62,22 @@ const Detail = ({ postDetails }: IProps) => {
     };
 
 
-    const addComment = async () => {
+    const addComment = async (e: { preventDefault: () => void }) => {
+        e.preventDefault();
 
+        if(userProfile) {
+            if(comment) {
+                setIsPostingComment(true);
+                const res = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+                    userId: userProfile._id,
+                    comment
+                });
+
+                setPost({ ...post, comments: res.data.comments });
+                setComment('');
+                setIsPostingComment(false);
+            }
+        }
     }
 
     if(!post) return null;
