@@ -91,7 +91,26 @@ const Detail = ({ postDetails }: IProps) => {
             </div>
 
             <div className='relative w-[1000px] md:w-[900px] lg:w-[700px]'>
-
+                <div className="lg:mt-20 mt-10">
+                    <Link href={`/profile/${post.postedBy._id}`}>
+                        <div className='flex gap-4 mb-4 bg-white w-full pl-10 cursor-pointer'>
+                            <Image
+                                width={60}
+                                height={60}
+                                alt='user-profile'
+                                className='rounded-full'
+                                src={post.postedBy.image}
+                            />
+                            <div>
+                                <div className='text-xl font-bold lowercase tracking-wider flex gap-2 items-center justify-center'>
+                                    {post.postedBy.userName.replace(/\s+/g, '')}{' '}
+                                    <GoVerified className='text-blue-400 text-xl' />
+                                </div>
+                                <p className='text-md'> {post.postedBy.userName}</p>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
             </div>
         </div>
     );
