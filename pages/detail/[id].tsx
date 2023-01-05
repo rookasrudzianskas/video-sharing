@@ -29,6 +29,10 @@ const Detail = ({ postDetails }: IProps) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const router = useRouter();
 
+    const onVideoClick = () => {
+
+    }
+
     if(!post) return null;
 
     return (
@@ -42,11 +46,22 @@ const Detail = ({ postDetails }: IProps) => {
                 <div className="relative">
                     <div className="lg:h-[100vh] h-[60vh]">
                         <video
+                            ref={videoRef}
+                            loop
+                            onClick={() => {} }
                             className="h-full cursor-pointer"
                             src={post.video.asset.url}
                         >
 
                         </video>
+                    </div>
+
+                    <div>
+                        {!isPlaying && (
+                            <button onClick={onVideoClick}>
+                                <BsFillPlayFill className='text-white text-6xl lg:text-8xl' />
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
