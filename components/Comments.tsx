@@ -21,10 +21,19 @@ interface IComment {
     _key: string;
     postedBy: { _ref?: string; _id?: string };
 }
-const Comments = ({}) => {
+const Comments = ({ comment, setComment, addComment, isPostingComment }: IProps) => {
+    let comments = [];
     return (
-        <div>
-
+        <div className='border-t-2 border-gray-200 pt-4 px-10 mt-4 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]'>
+            <div className='overflow-scroll lg:h-[457px]'>
+                {comments?.length ? (
+                    <div>
+                        videos
+                    </div>
+                ) : (
+                    <NoResults text="No Comments Yet! Be the first one to add a comment." />
+                )}
+            </div>
         </div>
     );
 };
