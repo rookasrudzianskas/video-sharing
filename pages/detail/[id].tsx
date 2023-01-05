@@ -31,3 +31,13 @@ const Detail = ({ postDetails }: IProps) => {
 
 export default Detail;
 // by Rokas with ❤️
+
+export const getServerSideProps = async ({ params: { id }}) => {
+    const res = await axios.get(`${BASE_URL}/api/post/${id}`);
+
+    return {
+        props: {
+            postDetails: res.data
+        }
+    }
+}
