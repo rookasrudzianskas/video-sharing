@@ -31,7 +31,7 @@ const Comments = ({ comment, setComment, addComment, isPostingComment }: IProps)
                         videos
                     </div>
                 ) : (
-                    <NoResults text="No Comments Yet! Be the first one to add a comment." />
+                    <NoResults text="No Comments Yet!" />
                 )}
             </div>
         </div>
