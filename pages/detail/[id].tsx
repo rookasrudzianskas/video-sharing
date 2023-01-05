@@ -30,14 +30,14 @@ const Detail = ({ postDetails }: IProps) => {
     const router = useRouter();
 
     const onVideoClick = () => {
-        if(isPlaying) {
-            videoRef.current?.pause();
+        if (isPlaying) {
+            videoRef?.current?.pause();
             setIsPlaying(false);
         } else {
-            videoRef.current?.play();
+            videoRef?.current?.play();
             setIsPlaying(true);
         }
-    }
+    };
 
     if(!post) return null;
 
@@ -69,6 +69,18 @@ const Detail = ({ postDetails }: IProps) => {
                             </button>
                         )}
                     </div>
+                </div>
+
+                <div className='absolute bottom-5 lg:bottom-10 right-5 lg:right-10  cursor-pointer'>
+                    {isVideoMuted ? (
+                        <button onClick={() => setIsVideoMuted(false)}>
+                            <HiVolumeOff className='text-white text-3xl lg:text-4xl' />
+                        </button>
+                    ) : (
+                        <button onClick={() => setIsVideoMuted(true)}>
+                            <HiVolumeUp className='text-white text-3xl lg:text-4xl' />
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
