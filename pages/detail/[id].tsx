@@ -14,6 +14,8 @@ import { BASE_URL } from '../../utils';
 import useAuthStore from '../../store/authStore';
 import { Video } from '../../types';
 import axios from 'axios';
+import Comments from "../../components/Comments";
+import LikeButton from "../../components/LikeButton";
 
 interface IProps {
     postDetails: Video;
@@ -28,6 +30,7 @@ const Detail = ({ postDetails }: IProps) => {
 
     const videoRef = useRef<HTMLVideoElement>(null);
     const router = useRouter();
+    const {userProfile} = useAuthStore();
 
     const onVideoClick = () => {
         if (isPlaying) {
@@ -44,6 +47,23 @@ const Detail = ({ postDetails }: IProps) => {
             videoRef.current.muted = isVideoMuted;
         }
     }, [post, isVideoMuted]);
+
+    const handleLike = async (like: boolean) => {
+        if (userProfile) {
+            const res = await axios.put(`${BASE_URL}/api/like`, {
+                userId: userProfile._id,
+                postId: post._id,
+                like
+            });
+
+            setPost({ ...post, likes: res.data.likes });
+        }
+    };
+
+
+    const addComment = async () => {
+
+    }
 
     if(!post) return null;
 
@@ -114,9 +134,23 @@ const Detail = ({ postDetails }: IProps) => {
                     <div className="px-10">
                         <p className="text-md text-gray-600">{post.caption}</p>
                     </div>
-                    <div>
-
+                    <div className="mt-10 px-10">
+                        {userProfile && (
+                            <LikeButton
+                                likes={post.likes}
+                                flex="flex"
+                                handleLike={() => handleLike(true)}
+                                handleDislike={() => handleLike(false)}
+                            />
+                        )}
                     </div>
+                    <Comments
+                        comment={comment}
+                        setComment={setComment}
+                        addComment={addComment}
+                        comments={post.comments}
+                        isPostingComment={isPostingComment}
+                    />
                 </div>
             </div>
         </div>
