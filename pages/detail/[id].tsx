@@ -56,7 +56,7 @@ const Detail = ({ postDetails }: IProps) => {
                         </video>
                     </div>
 
-                    <div>
+                    <div className="absolute top-[45%] left-[45%] cursor-pointer">
                         {!isPlaying && (
                             <button onClick={onVideoClick}>
                                 <BsFillPlayFill className='text-white text-6xl lg:text-8xl' />
