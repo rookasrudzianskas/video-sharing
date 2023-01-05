@@ -89,6 +89,10 @@ const Detail = ({ postDetails }: IProps) => {
                     )}
                 </div>
             </div>
+
+            <div className='relative w-[1000px] md:w-[900px] lg:w-[700px]'>
+
+            </div>
         </div>
     );
 };
