@@ -39,5 +39,9 @@ To get started, you need to have the following installed on your machine:
 ### Production
 ``yarn start or npm run start``
 
+## The live version of this project can be found here:
+https://rookas-tiktok-app.vercel.app/
+
 ## Contributing
 In the future, I will be adding a contributing guide.
+
