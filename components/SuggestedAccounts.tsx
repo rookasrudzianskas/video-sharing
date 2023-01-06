@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Image from 'next/image';
+import { NextPage } from 'next';
+import Link from 'next/link';
+import { GoVerified } from 'react-icons/go';
 
-const SuggestedAccounts = ({}) => {
+import { IUser } from '../types';
+
+interface IProps {
+    fetchAllUsers: () => void;
+    allUsers: IUser[];
+}
+const SuggestedAccounts: NextPage<IProps> = ({ fetchAllUsers, allUsers }) => {
     return (
         <div>
-            
+
         </div>
     );
 };
