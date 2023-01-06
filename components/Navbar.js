@@ -30,8 +30,10 @@ const Navbar = ({}) => {
                 </div>
             </Link>
 
-            <div>
-                SEARCH
+            <div className="relative hidden md:block">
+                <form action="">
+
+                </form>
             </div>
 
             <div>
