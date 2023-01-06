@@ -11,7 +11,7 @@ interface IProps {
     fetchAllUsers: () => void;
     allUsers: IUser[];
 }
-const SuggestedAccounts: NextPage<IProps> = () => {
+const SuggestedAccounts = () => {
     const { fetchAllUsers, allUsers } = useAuthStore();
 
     useEffect(() => {
