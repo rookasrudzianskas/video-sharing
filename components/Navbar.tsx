@@ -18,7 +18,11 @@ const Navbar = ({}) => {
     const [searchValue, setSearchValue] = useState('');
 
     const handleSearch = (e: { preventDefault: () => void }) => {
+        e.preventDefault();
 
+        if(searchValue) {
+            router.push(`/search/${searchValue}`);
+        }
     }
 
     return (
@@ -46,6 +50,9 @@ const Navbar = ({}) => {
                         className='bg-primary p-3 pl-5 md:text-md font-medium border-2 border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full  md:top-0'
                         placeholder='Search accounts and videos'
                     />
+                    <button className="absolute md:right-5 right-6 top-4 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400" onClick={handleSearch}>
+                        <BiSearch />
+                    </button>
                 </form>
             </div>
 
