@@ -20,6 +20,7 @@ const Search = ({videos}: { videos: Video[] }) => {
 
     const accounts = isAccounts ? 'border-b-2 border-black' : 'text-gray-400';
     const isVideos = !isAccounts ? 'border-b-2 border-black' : 'text-gray-400';
+    const searchedAccounts = allUsers?.filter((user: IUser) => user.userName.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
         <div className="w-full">
@@ -32,8 +33,32 @@ const Search = ({videos}: { videos: Video[] }) => {
                 </p>
             </div>
             {isAccounts ? (
-                <div>
-                    <p>Accounts</p>
+                <div className="md:mt-16">
+                    {searchedAccounts?.length > 0 ? (
+                        searchedAccounts.map((user: IUser, idx: number) => (
+                            <Link key={idx} href={`/profile/${user._id}`}>
+                                <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200">
+                                    <div>
+                                        <Image width={50} height={50} className='rounded-full' alt='user-profile' src={user.image}/>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <p className='flex gap-1 items-center text-lg font-bold text-primary'>
+                                                {user.userName} <GoVerified className='text-blue-400' />
+                                            </p>
+                                            <p className='capitalize text-gray-400 text-sm'>
+                                                {user.userName}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))
+                    ) : (
+                        <div>
+
+                        </div>
+                    )}
                 </div>
             ) : (
                 <div className="md:mt-16 flex flex-wrap gap-6 md:justify-start">
