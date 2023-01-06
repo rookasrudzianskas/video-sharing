@@ -13,7 +13,7 @@ const List = ({ items, mt }: { items: string[], mt: Boolean }) => {
         </div>
     )
 }
-const Footer = ({}) => {
+const Footer = () => {
     return (
         <div className='mt-6 hidden xl:block'>
             <List items={footerList1} mt={false} />
