@@ -15,8 +15,9 @@ const Navbar = ({}) => {
     const user = false;
     const router = useRouter();
     const { userProfile, addUser, removeUser } = useAuthStore();
+    const [searchValue, setSearchValue] = useState('');
 
-    const handleSearch = (e) => {
+    const handleSearch = (e: { preventDefault: () => void }) => {
 
     }
 
@@ -39,7 +40,12 @@ const Navbar = ({}) => {
                     onSubmit={handleSearch}
                     className='absolute md:static top-10 -left-20 bg-white'
                     action="">
-
+                    <input
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        className='bg-primary p-3 md:text-md font-medium border-2 border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full  md:top-0'
+                        placeholder='Search accounts and videos'
+                    />
                 </form>
             </div>
 
