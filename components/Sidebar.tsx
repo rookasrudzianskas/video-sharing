@@ -9,7 +9,7 @@ import SuggestedAccounts from "./SuggestedAccounts";
 import Discover from "./Discover";
 import Footer from "./Footer";
 
-const Sidebar = ({}) => {
+const Sidebar = () => {
     const [showSidebar, setShowSidebar] = useState(true);
     const userProfile = false;
     const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#f51997] rounded'
