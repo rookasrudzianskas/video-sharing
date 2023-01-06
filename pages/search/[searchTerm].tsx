@@ -31,6 +31,16 @@ const Search = ({videos}: { videos: Video[] }) => {
                     Videos
                 </p>
             </div>
+            {isAccounts ? (
+                <div>
+                    <p>Accounts</p>
+
+                </div>
+            ) : (
+                <div>
+                    Videos
+                </div>
+            )}
         </div>
     );
 };
