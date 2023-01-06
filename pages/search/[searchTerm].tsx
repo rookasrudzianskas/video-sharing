@@ -34,7 +34,6 @@ const Search = ({videos}: { videos: Video[] }) => {
             {isAccounts ? (
                 <div>
                     <p>Accounts</p>
-
                 </div>
             ) : (
                 <div>
